@@ -22,7 +22,7 @@ class BaseGenerator extends Serializable {
   }
 
   def apply(implicit args: Array[String] = new Array[String](0),
-            f: (RDD[(Long, LongOpenHashBigSet)], Parser) => Unit = Predef.count,
+            f: (RDD[(Long, LongOpenHashBigSet)], Parser) => Unit = Predef.plotOutDegree,
             isPrinted: Boolean = true) {
     val appNameArgs = appName + " / " + (new Date).toString + " / " + args.mkString(" ")
     val conf = new SparkConf().setAppName(appNameArgs)

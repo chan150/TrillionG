@@ -14,11 +14,11 @@ object SKGGenerator extends BaseGenerator {
   override val appName = "TrillionG: A Trillion-scale Synthetic Graph Generator using a Recursive Vector Model"
 
   implicit class RecVecGenClass(self: RDD[Long]) extends Serializable {
-    def doRecVecGen(bskg: Broadcast[_ <: SKG]) = {
+    def doRecVecGen(bskg: Broadcast[_ <: SKG], rng: Long) = {
       self.mapPartitions {
         case partitions =>
           val skg = bskg.value
-          val random = new SKG.randomClass
+          val random = new SKG.randomClass(rng)
           partitions.flatMap {
             case u =>
               val degree = skg.getDegree(u, random)
@@ -46,7 +46,7 @@ object SKGGenerator extends BaseGenerator {
     val bskg = sc.broadcast(SKG.constructFrom(parser))
     val degreeRDD = verticesRDD.map(vid => (vid, bskg.value.getExpectedDegree(vid)))
     val partitionedVertices = degreeRDD.rangePartition(parser.machine, parser.n, parser.e)
-    val edges = partitionedVertices.doRecVecGen(bskg)
+    val edges = partitionedVertices.doRecVecGen(bskg, parser.rng)
     edges
   }
 }

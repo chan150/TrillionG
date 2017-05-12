@@ -48,7 +48,7 @@ class SKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int) ext
 
   private[generator] def getDegree(vid: Long, r: SKG.randomClass = random) = {
     val s = getExpectedDegree(vid: Long)
-    math.round(s + math.sqrt(s) * r.nextGaussian).toLong
+    math.round(s + math.sqrt(s*(1-getPout(vid))) * r.nextGaussian).toLong
   }
 
   private[generator] def getCDF(vid: Long, logto: Int) = {

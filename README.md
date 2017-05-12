@@ -26,6 +26,13 @@ or
 ./run.sh output_file
 ``
 
+## Usage(Detail example)
+ - generate scale20 graph which has 0.1 noises as tsv output format format by using 120 machines/threads 
+``
+./run.sh output -n 20 -m 120 -format tsv -noise 0.1
+``
+
+
 ## Parameters
  - **-p** seed parameter (e.g. -p 0.57,0.19,0.19,0.05)
  - **-logn** or **-n** scale of graph (number of vertices in log-scale) (e.g. -n 20)

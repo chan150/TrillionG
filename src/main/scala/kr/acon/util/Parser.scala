@@ -32,10 +32,10 @@ class Parser extends Serializable {
   var compress = "NONE"
   var rng = System.currentTimeMillis
   var opt = 0
-  var exactEdges = e 
+  def exactEdges = e 
 
   var threshold = Long.MaxValue
-  val term = List("-logn", "-ratio", "-p", "-machine", "-n", "-r", "-m", "-hdfs", "-noise", "-format", "-compress", "-rng", "-opt", "-threshold")
+  val term = List("-logn", "-ratio", "-p", "-machine", "-n", "-r", "-m", "-hdfs", "-noise", "-format", "-compress", "-rng", "-opt", "-threshold","-output")
 
   def isNSKG = (noise != 0d)
 
@@ -73,7 +73,7 @@ class Parser extends Serializable {
       case "machine" | "m" => machine = value.toInt
       case "output" => file = value
       case "noise" => noise = value.toDouble
-      case "rng" => rng = value.toInt
+      case "rng" => rng = value.toLong
       case "opt" => opt = value.toInt
       case "threshold" => threshold = value.toLong
       case "format" => {
@@ -94,6 +94,7 @@ class Parser extends Serializable {
     println("Param=%s, |V|=%d (%d), |E|=%d, Noise=%.3f".format(param.toString, n, logn, exactEdges, noise))
     println("PATH=%s, Machine=%d".format(hdfs + file, machine))
     println("OutputFormat=%s, CompressCodec=%s".format(format.toString(), compress.toString()))
+    println("RandomSeed=%d".format(rng))
   }
 
   def getOutputFormat: Class[_ <: OutputFormat[Long, LongOpenHashSet]] = {
