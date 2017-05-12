@@ -38,7 +38,7 @@ or
 ## Output Format
  - **tsv** Edge list format with tap sperated value 
  - **adj** Adjacency list format with 6 byte alignment, in addition, **adj4**, **adj6**, **adj8**
- - **csr** Compresed sparse row format with 6 byte alignment, in addition, ***csr4*, **csr6**, **csr8**
+ - **csr** Compresed sparse row format with 6 byte alignment, in addition, **csr4**, **csr6**, **csr8**
  - or explicitly write the class name
 
 ## Compression codec
