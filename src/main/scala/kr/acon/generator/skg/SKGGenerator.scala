@@ -18,9 +18,9 @@ object SKGGenerator extends BaseGenerator {
       self.mapPartitions {
         case partitions =>
           val skg = bskg.value
-          val random = new SKG.randomClass(rng)
           partitions.flatMap {
             case u =>
+              val random = new SKG.randomClass(rng + u)
               val degree = skg.getDegree(u, random)
               if (degree < 1)
                 Iterator.empty
