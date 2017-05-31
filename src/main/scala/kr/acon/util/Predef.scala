@@ -24,7 +24,7 @@ object Predef {
     "gnuplot app/degree.plot"!;
     "rm -rf temp"!;
     "mv output.eps " + parser.file + ".eps"!;
-    println("okular ~/Release/QuadrillionG/" + parser.file + ".eps")
+	"okular " + parser.file + ".eps"!;
   }
 
   def plotOutDegree(e: RDD[(Long, LongOpenHashBigSet)], parser: Parser) {
