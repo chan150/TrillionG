@@ -1,5 +1,5 @@
 # TrillionG
-TrillionG is a trillion-scale graph generation using Recursive Vector model.
+TrillionG is a trillion-scale graph generator using Recursive Vector model.
 
 ## Usage (Simple example)
  - Git
