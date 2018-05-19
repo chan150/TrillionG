@@ -1,4 +1,4 @@
-# TrillionG
+# TrillionG [SIGMOD17]
 TrillionG is a trillion-scale graph generator using Recursive Vector model.
 
 ## Usage (Simple example)
