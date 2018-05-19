@@ -1,5 +1,5 @@
 # TrillionG: A Trillion-scale Synthetic Graph Generator Using a Recursive Vector Model [SIGMOD17]
-TrillionG is a trillion-scale graph generator using Recursive Vector model.
+//TrillionG is a trillion-scale graph generator using Recursive Vector model.
 
 ## Usage (Simple example)
  - Git
