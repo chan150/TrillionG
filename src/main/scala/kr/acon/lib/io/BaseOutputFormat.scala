@@ -1,10 +1,11 @@
 /*
- *    Copyright 2017 Himchan Park
- *   __________  ______    __    ________  _   __   ______
- *  /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
- *   / / / /_/ // // /   / /    / // / / /  |/ /  / / __
- *  / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
- * /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *      __________  ______    __    ________  _   __   ______
+ *     /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
+ *      / / / /_/ // // /   / /    / // / / /  |/ /  / / __
+ *     / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
+ *    /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *
+ *    Copyright (C) 2017 Himchan Park (chan150@dgist.ac.kr)
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -23,15 +24,11 @@ package kr.acon.lib.io
 
 import java.io.DataOutputStream
 
+import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.io.compress.GzipCodec
-import org.apache.hadoop.mapred.FileOutputFormat
-import org.apache.hadoop.mapred.JobConf
-import org.apache.hadoop.mapred.RecordWriter
-import org.apache.hadoop.util.Progressable
-import org.apache.hadoop.util.ReflectionUtils
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
+import org.apache.hadoop.mapred.{FileOutputFormat, JobConf, RecordWriter}
+import org.apache.hadoop.util.{Progressable, ReflectionUtils}
 
 abstract class BaseOutputFormat extends FileOutputFormat[Long, LongOpenHashBigSet] {
   @inline def getRecordWriter(out: DataOutputStream): RecordWriter[Long, LongOpenHashBigSet]

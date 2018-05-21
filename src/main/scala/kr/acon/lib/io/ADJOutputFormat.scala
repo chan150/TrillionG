@@ -1,10 +1,11 @@
 /*
- *    Copyright 2017 Himchan Park
- *   __________  ______    __    ________  _   __   ______
- *  /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
- *   / / / /_/ // // /   / /    / // / / /  |/ /  / / __
- *  / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
- * /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *      __________  ______    __    ________  _   __   ______
+ *     /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
+ *      / / / /_/ // // /   / /    / // / / /  |/ /  / / __
+ *     / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
+ *    /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *
+ *    Copyright (C) 2017 Himchan Park (chan150@dgist.ac.kr)
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -23,9 +24,7 @@ package kr.acon.lib.io
 
 import java.io.DataOutputStream
 
-import kr.acon.lib.io.recordwriter.ADJ6RecordWriter
-import kr.acon.lib.io.recordwriter.ADJ8RecordWriter
-import kr.acon.lib.io.recordwriter.ADJ4RecordWriter
+import kr.acon.lib.io.recordwriter.{ADJ4RecordWriter, ADJ6RecordWriter, ADJ8RecordWriter}
 
 class ADJ4OutputFormat
     extends BaseOutputFormat {

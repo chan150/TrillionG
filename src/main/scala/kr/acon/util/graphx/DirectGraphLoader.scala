@@ -1,10 +1,11 @@
 /*
- *    Copyright 2017 Himchan Park
- *   __________  ______    __    ________  _   __   ______
- *  /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
- *   / / / /_/ // // /   / /    / // / / /  |/ /  / / __
- *  / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
- * /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *      __________  ______    __    ________  _   __   ______
+ *     /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
+ *      / / / /_/ // // /   / /    / // / / /  |/ /  / / __
+ *     / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
+ *    /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *
+ *    Copyright (C) 2017 Himchan Park (chan150@dgist.ac.kr)
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -21,13 +22,11 @@
 
 package org.apache.spark.graphx
 
-import org.apache.spark.graphx.impl.EdgePartitionBuilder
-import org.apache.spark.graphx.impl.GraphImpl
+import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
+import org.apache.spark.graphx.impl.{EdgePartitionBuilder, GraphImpl}
 import org.apache.spark.internal.Logging
 import org.apache.spark.rdd.RDD
 import org.apache.spark.storage.StorageLevel
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
 
 object DirectGraphLoader extends Logging {
   def edgeListFile(e: RDD[(Long, LongOpenHashBigSet)]): Graph[Int, Int] =

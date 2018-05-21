@@ -1,10 +1,11 @@
 /*
- *    Copyright 2017 Himchan Park
- *   __________  ______    __    ________  _   __   ______
- *  /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
- *   / / / /_/ // // /   / /    / // / / /  |/ /  / / __
- *  / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
- * /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *      __________  ______    __    ________  _   __   ______
+ *     /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
+ *      / / / /_/ // // /   / /    / // / / /  |/ /  / / __
+ *     / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
+ *    /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *
+ *    Copyright (C) 2017 Himchan Park (chan150@dgist.ac.kr)
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -23,15 +24,12 @@ package kr.acon.generator
 
 import java.util.Date
 
+import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
+import kr.acon.util.{Parser, Predef}
 import org.apache.hadoop.io.LongWritable
-import org.apache.spark.SparkConf
-import org.apache.spark.SparkContext
+import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
-import kr.acon.util.Parser
-import kr.acon.util.Predef
 
 class BaseGenerator extends Serializable {
   val parser = new Parser

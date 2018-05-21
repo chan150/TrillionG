@@ -1,10 +1,11 @@
 /*
- *    Copyright 2017 Himchan Park
- *   __________  ______    __    ________  _   __   ______
- *  /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
- *   / / / /_/ // // /   / /    / // / / /  |/ /  / / __
- *  / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
- * /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *      __________  ______    __    ________  _   __   ______
+ *     /_  __/ __ \/  _/ /   / /   /  _/ __ \/ | / /  / ____/
+ *      / / / /_/ // // /   / /    / // / / /  |/ /  / / __
+ *     / / / _, _// // /___/ /____/ // /_/ / /|  /  / /_/ /
+ *    /_/ /_/ |_/___/_____/_____/___/\____/_/ |_/   \____/
+ *
+ *    Copyright (C) 2017 Himchan Park (chan150@dgist.ac.kr)
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -21,19 +22,10 @@
 
 package kr.acon.util
 
-import org.apache.hadoop.io.compress.BZip2Codec
-import org.apache.hadoop.io.compress.CompressionCodec
-import org.apache.hadoop.io.compress.SnappyCodec
-import org.apache.hadoop.mapred.OutputFormat
-
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet
-import kr.acon.lib.io.ADJ6OutputFormat
-import kr.acon.lib.io.ADJ8OutputFormat
-import kr.acon.lib.io.CSR6OutputFormat
-import kr.acon.lib.io.CSR8OutputFormat
-import kr.acon.lib.io.TSVOutputFormat
-import kr.acon.lib.io.CSR4OutputFormat
-import kr.acon.lib.io.ADJ4OutputFormat
+import kr.acon.lib.io._
+import org.apache.hadoop.io.compress.{BZip2Codec, CompressionCodec, SnappyCodec}
+import org.apache.hadoop.mapred.OutputFormat
 
 class Parser extends Serializable {
   var hdfs = "hdfs://jupiter01:9000/user/himchan/"
