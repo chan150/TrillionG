@@ -61,21 +61,12 @@ For more details about TrillionG, please refer to [our paper](http://infolab.dgi
 
 If you use TrillionG, please cite:
 ```
-@inproceedings{Park:2017:TTS:3035918.3064014,
- author = {Park, Himchan and Kim, Min-Soo},
- title = {TrillionG: A Trillion-scale Synthetic Graph Generator Using a Recursive Vector Model},
- booktitle = {Proceedings of the 2017 ACM International Conference on Management of Data},
- series = {SIGMOD '17},
- year = {2017},
- isbn = {978-1-4503-4197-4},
- location = {Chicago, Illinois, USA},
- pages = {913--928},
- numpages = {16},
- url = {http://doi.acm.org/10.1145/3035918.3064014},
- doi = {10.1145/3035918.3064014},
- acmid = {3064014},
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {benchmark, distributed, graph generation, ldbc, rdf, realistic, recursive vector model, rmat, scalability, synthetic},
-} 
+@inproceedings{park2017trilliong,
+  title={TrillionG: A trillion-scale synthetic graph generator using a recursive vector model},
+  author={Park, Himchan and Kim, Min-Soo},
+  booktitle={Proceedings of the 2017 ACM International Conference on Management of Data},
+  pages={913--928},
+  year={2017},
+  organization={ACM}
+}
 ```
