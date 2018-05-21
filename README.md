@@ -57,7 +57,9 @@ bash run.sh output -n 20 -m 120 -format tsv -noise 0.1
 Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 ## Citing the paper
+For more details about TrillionG, please refer to [our paper](http://infolab.dgist.ac.kr/~mskim/papers/SIGMOD17.pdf).
 
+If you use TrillionG, please cite:
 ```
 @inproceedings{Park:2017:TTS:3035918.3064014,
  author = {Park, Himchan and Kim, Min-Soo},
