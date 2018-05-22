@@ -27,9 +27,9 @@ import java.util.Date
 import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
 import kr.acon.util.{Parser, Predef}
 import org.apache.hadoop.io.LongWritable
-import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
+import org.apache.spark.{SparkConf, SparkContext}
 
 class BaseGenerator extends Serializable {
   val parser = new Parser
