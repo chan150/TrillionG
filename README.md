@@ -9,27 +9,27 @@ git clone https://github.com/chan150/TrillionG
 
  - Compile 
 ``
-bash compile.sh
+./compile.sh
 ``
 or 
 ``
-bash compile-local.sh
+./compile-local.sh
 ``
 
  - Execute TrillionG in single machine
 ``
-bash run-local.sh output_file
+./run-local.sh output_file
 ``
 
  - Execute TrillionG in distributed machines
 ``
-bash run.sh output_file
+./run.sh output_file
 ``
 
 ## Usage (Detail example)
  - generate scale20 graph which has 0.1 noises as tsv output format format by using 120 machines/threads 
 ``
-bash run.sh output -n 20 -m 120 -format tsv -noise 0.1
+./run.sh output -n 20 -m 120 -format tsv -noise 0.1
 ``
 
 
