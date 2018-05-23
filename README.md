@@ -1,10 +1,10 @@
 # TrillionG [SIGMOD17]
-TrillionG is a Trillion-scale Synthetic Graph Generator Using a Recursive Vector Model.
+TrillionG: Trillion-scale Synthetic Graph Generator Using a Recursive Vector Model.
 
 ## Usage (Simple example)
  - Git
 ``
-git clone https://github.com/chan150/TrillionG
+git clone https://github.com/chan150/TrillionG.git
 `` 
 
  - Compile 
@@ -16,7 +16,7 @@ or
 ./compile-local.sh
 ``
 
- - Execute TrillionG in single machine
+ - Execute TrillionG in a single machine
 ``
 ./run-local.sh output_file
 ``
