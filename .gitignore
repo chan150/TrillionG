@@ -4,4 +4,6 @@ project
 target
 use-cases*
 src/main/scala/kr/acon/generator/schema*
-TrillionG.jar
+TrillionG*
+spark*
+graph*

@@ -1,6 +1,7 @@
-
 # Set your environment
-NUMCORE=`cat /proc/cpuinfo|grep processor| wc -l`
+NUMCORE_MAC=`sysctl hw.ncpu | awk '{print $2}' 2>/dev/null`
+NUMCORE_LINUX=`grep -c processor /proc/cpuinfo 2>/dev/null`
+NUMCORE=`echo $NUMCORE_MAC $NUMCORE_LINUX`
 MASTER=local[$NUMCORE]
 SPARK_HOME=spark-2.1.0
 HDFS_HOME=./
