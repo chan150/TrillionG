@@ -57,7 +57,7 @@ or
 Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 ## Citing the paper
-For more details about TrillionG, please refer to [our paper](http://infolab.dgist.ac.kr/~mskim/papers/SIGMOD17.pdf).
+For more details about TrillionG, please refer to [our paper](https://dl.acm.org/authorize?N667286).
 
 If you use TrillionG, please cite:
 ```
