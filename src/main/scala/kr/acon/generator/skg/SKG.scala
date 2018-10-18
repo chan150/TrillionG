@@ -22,21 +22,22 @@
 
 package kr.acon.generator.skg
 
-import kr.acon.util.{Parser, Util}
+import kr.acon.parser.TrillionGParser
+import kr.acon.util.Utilities
 
 import scala.annotation.tailrec
 import scala.util.Random
 
 object SKG {
-  final def constructFrom(p: Parser) = {
-    //    if (p.opt != 0)
-    //      new OptionalSKG(p)
-    //    else 
-    if (p.noise == 0)
+  final def constructFrom(p: TrillionGParser) = {
+    if (p.opt != 0)
+      new OptionalSKG(p)
+    else if (p.noise == 0)
       new SKG(p)
     else
       new NSKG(p)
   }
+
   @inline final type randomClass = Random
 }
 
@@ -50,7 +51,7 @@ class SKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int) ext
   @inline protected final val aab = Array.tabulate(logn + 1)(x => math.pow(a / (a + b), x))
   @inline protected final val ccd = Array.tabulate(logn + 1)(x => math.pow(c / (c + d), x))
 
-  private[generator] def this(p: Parser) {
+  private[generator] def this(p: TrillionGParser) {
     this(p.a, p.b, p.c, p.d, p.logn, p.ratio)
   }
 
@@ -69,7 +70,7 @@ class SKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int) ext
 
   private[generator] def getDegree(vid: Long, r: SKG.randomClass = random) = {
     val s = getExpectedDegree(vid: Long)
-    math.round(s + math.sqrt(s*(1-getPout(vid))) * r.nextGaussian).toLong
+    math.round(s + math.sqrt(s * (1 - getPout(vid))) * r.nextGaussian).toLong
   }
 
   private[generator] def getCDF(vid: Long, logto: Int) = {
@@ -99,8 +100,9 @@ class SKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int) ext
     array
   }
 
-  @inline @tailrec private[generator] final def determineEdge0BinarySearch(gp: Double, recVec: Array[Double], sigmas: Array[Double], prev: Int, acc: Long = 0): Long = {
-    val k = Util.binarySearch(recVec, prev, gp)
+  @inline
+  @tailrec private[generator] final def determineEdge0BinarySearch(gp: Double, recVec: Array[Double], sigmas: Array[Double], prev: Int, acc: Long = 0): Long = {
+    val k = Utilities.binarySearch(recVec, prev, gp)
     if (0 > k || k >= prev) {
       acc
     } else {

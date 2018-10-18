@@ -1,8 +1,7 @@
 .DS_Store
 .idea
-project
+project/target
 target
 use-cases*
 src/main/scala/kr/acon/generator/schema*
 spark*
-graph*

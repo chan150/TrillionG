@@ -1,2 +1,3 @@
-./sbt/bin/sbt package
+#!/usr/bin/env bash
+sbt/bin/sbt package
 cp target/scala*/*.jar TrillionG.jar

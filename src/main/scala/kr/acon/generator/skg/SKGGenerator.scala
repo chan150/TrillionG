@@ -24,19 +24,23 @@ package kr.acon.generator.skg
 
 import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
 import kr.acon.generator.BaseGenerator
-import kr.acon.util.Util.RangePartitionFromDegreeRDD
-import org.apache.spark.SparkContext
+import kr.acon.parser.TrillionGParser
+import kr.acon.util.Utilities.RangePartitionFromDegreeRDD
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.rdd.RDD
 
 object SKGGenerator extends BaseGenerator {
   override val appName = "TrillionG: A Trillion-scale Synthetic Graph Generator using a Recursive Vector Model"
 
+  override val parser = new TrillionGParser
+
+  lazy val accumulator = sc.longAccumulator("Edge count")
+
   implicit class RecVecGenClass(self: RDD[Long]) extends Serializable {
-    def doRecVecGen(bskg: Broadcast[_ <: SKG], rng: Long) = {
+    def doRecVecGen(ds: Broadcast[_ <: SKG], rng: Long) = {
       self.mapPartitions {
         case partitions =>
-          val skg = bskg.value
+          val skg = ds.value
           partitions.flatMap {
             case u =>
               val random = new SKG.randomClass(rng + u)
@@ -53,6 +57,7 @@ object SKGGenerator extends BaseGenerator {
                   adjacency.add(skg.determineEdge(u, recVec, sigmas, random))
                   i += 1
                 }
+                accumulator.add(adjacency.size64())
                 Iterator((u, adjacency))
               }
           }
@@ -60,12 +65,19 @@ object SKGGenerator extends BaseGenerator {
     }
   }
 
-  override def run(sc: SparkContext): RDD[(Long, LongOpenHashBigSet)] = {
-    val verticesRDD = largeVertices(sc)
-    val bskg = sc.broadcast(SKG.constructFrom(parser))
-    val degreeRDD = verticesRDD.map(vid => (vid, bskg.value.getExpectedDegree(vid)))
-    val partitionedVertices = degreeRDD.rangePartition(parser.machine, parser.n, parser.e)
-    val edges = partitionedVertices.doRecVecGen(bskg, parser.rng)
+  override def postProcessing(): Unit = {
+    println("Param=%s, |V|=%d (2^%d), |E|=%d, Noise=%.3f".format(parser.param, parser.n, parser.logn, accumulator.value, parser.noise))
+    println("PATH=%s, Machine=%d".format(parser.hdfs + parser.file, parser.machine))
+    println("OutputFormat=%s, CompressCodec=%s".format(parser.format, parser.compress))
+    println("RandomSeed=%d".format(parser.rng))
+  }
+
+  override def run: RDD[(Long, LongOpenHashBigSet)] = {
+    val vertexRDD = sc.range(0, parser.n - 1, 1, parser.machine)
+    val ds = sc.broadcast(SKG.constructFrom(parser))
+    val degreeRDD = vertexRDD.map(vid => (vid, ds.value.getExpectedDegree(vid)))
+    val partitionedVertexRDD = degreeRDD.rangePartition(parser.machine, parser.n, parser.e)
+    val edges = partitionedVertexRDD.doRecVecGen(ds, parser.rng)
     edges
   }
 }

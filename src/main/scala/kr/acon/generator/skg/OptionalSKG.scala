@@ -22,9 +22,9 @@
 
 package kr.acon.generator.skg
 
-import kr.acon.util.Parser
+import kr.acon.parser.TrillionGParser
 
-// opt = 1 2 4 (#1) (#2) (#3)  
+// opt = 1 2 4 (#1) (#2) (#3)
 class OptionalSKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int, opt: Int = 0)
     extends SKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int) {
 
@@ -88,7 +88,7 @@ class OptionalSKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: 
     getPout(vid) * aab * ccd
   }
 
-  private[generator] def this(p: Parser) {
+  private[generator] def this(p: TrillionGParser) {
     this(p.a, p.b, p.c, p.d, p.logn, p.ratio, p.opt)
   }
 

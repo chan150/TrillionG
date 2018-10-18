@@ -22,11 +22,11 @@
 
 package kr.acon.generator.skg
 
-import kr.acon.util.Parser
+import kr.acon.parser.TrillionGParser
 
 class NaiveNSKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int, noise: Double)
     extends SKG(a: Double, b: Double, c: Double, d: Double, logn: Int, ratio: Int) {
-  private[generator] def this(p: Parser) {
+  private[generator] def this(p: TrillionGParser) {
     this(p.a, p.b, p.c, p.d, p.logn, p.ratio, p.noise)
   }
   
