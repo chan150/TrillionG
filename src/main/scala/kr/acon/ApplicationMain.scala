@@ -37,10 +37,7 @@ object ApplicationMain {
     println(s"Launching ${args(0)}...")
     args(0) match {
       case "TrillionG" => SKGGenerator(remainArgs)
-//      case "TrillionBA" => println("TBD") //TODO:
-//      case "EvoGraph" => println("Please use EvoGraph (https://chan150.github.io/EvoGraph)")
-//      case "EvoGraphPlus" => println("Please use EvoGraph (https://chan150.github.io/EvoGraph)")
-//      case "TGSim" => println("TBD") //TODO:
+      case _ =>
     }
   }
 }
