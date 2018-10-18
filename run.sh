@@ -22,5 +22,5 @@ spark-submit --master spark://$MASTER:$PORT --class kr.acon.ApplicationMain \
  --conf spark.network.timeout=20000000ms \
  --conf spark.hadoop.dfs.replication=1 \
  --conf spark.hadoop.mapreduce.fileoutputcommitter.algorithm.version=2 \
- --jars lib/fastutil-8.1.1.jar,lib/dsiutils-2.4.2.jar \
+ --jars `ls lib/* | xargs echo | tr ' ' ,` \
  TrillionG.jar TrillionG -format tsv -machine $NUMCORE -hdfs $HDFS_HOME $@

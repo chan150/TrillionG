@@ -15,5 +15,5 @@ MEMORY=512g
 $SPARK_HOME/bin/spark-submit --master $MASTER --class kr.acon.ApplicationMain \
  --executor-memory $MEMORY --driver-memory $MEMORY --conf spark.network.timeout=20000000ms \
  --conf spark.hadoop.dfs.replication=1 \
- --jars lib/fastutil-8.1.1.jar,lib/dsiutils-2.4.2.jar \
+ --jars `ls lib/* | xargs echo | tr ' ' ,` \
  TrillionG.jar TrillionG -hdfs $HDFS_HOME -format tsv -machine $NUMCORE $@

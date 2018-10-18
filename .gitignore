@@ -5,3 +5,4 @@ target
 use-cases*
 src/main/scala/kr/acon/generator/schema*
 spark-2.3.2
+.staging
