@@ -24,7 +24,7 @@
 
 package kr.acon.spark
 
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.{SparkConf, SparkContext, SparkException}
 
 import scala.collection.mutable
 
@@ -57,7 +57,7 @@ object SparkBuilder {
       }
       sc = new SparkContext(conf)
     } catch {
-      case _: Throwable => {
+      case _: SparkException => {
         conf = new SparkConf().setMaster("local[*]").setAppName(appName)
         configMap.foreach {
           case (key, value) =>
