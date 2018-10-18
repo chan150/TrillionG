@@ -4,4 +4,4 @@ project/target
 target
 use-cases*
 src/main/scala/kr/acon/generator/schema*
-spark*
+spark-2.3.2

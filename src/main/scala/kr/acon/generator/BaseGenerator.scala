@@ -29,14 +29,13 @@ import kr.acon.parser.Parser
 import kr.acon.spark.SparkBuilder
 import kr.acon.util.LoggingPolicy
 import org.apache.hadoop.io.LongWritable
-import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
 
 class BaseGenerator extends Serializable {
   LoggingPolicy.disableLogging
 
-  lazy val sc: SparkContext = SparkBuilder.build()
+  lazy val sc = SparkBuilder.build()
 
   val parser = new Parser
   val appName = "Base Graph Generator"
