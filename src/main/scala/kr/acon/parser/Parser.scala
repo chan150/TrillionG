@@ -50,16 +50,9 @@ class Parser extends Serializable {
   //  var bam = 2
   //  var bam0 = 2
   //  var bal = 10000l
-  //
-  //  // Graph Scaling Problem (EvoGraph)
-  //  var inputPath: String = "toy"
-  //  var scaleFactor: Long = 1
-  //  var eidMax: Long = 0
-  //  var vidMax: Long = 0
 
   val termBasic = List("-machine", "-m", "-hdfs", "-format", "-compress", "-rng", "-output", "-function", "-f")
   //  val termTrillionBA = List("-ba.n", "-ba.m", "-ba.m0", "-ba.l")
-  //  val termEvoGraph = List("-gs.input", "-gs.sf", "-gs.eid", "-gs.vid")
 
   val term = termBasic
 
@@ -91,12 +84,6 @@ class Parser extends Serializable {
       //      case "ba.m" => bam = value.toInt
       //      case "ba.m0" => bam0 = value.toInt
       //      case "ba.l" => bal = value.toInt
-      //
-      //      case "gs.input" => inputPath = value.toString
-      //      case "gs.sf" => scaleFactor = value.toLong
-      //
-      //      case "gs.eid" => eidMax = value.toLong
-      //      case "gs.vid" => vidMax = value.toLong
     }
   }
 

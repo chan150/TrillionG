@@ -34,8 +34,6 @@ object SKGGenerator extends BaseGenerator {
 
   override val parser = new TrillionGParser
 
-  lazy val accumulator = sc.longAccumulator("Edge count")
-
   implicit class RecVecGenClass(self: RDD[Long]) extends Serializable {
     def doRecVecGen(ds: Broadcast[_ <: SKG], rng: Long) = {
       self.mapPartitions {
@@ -57,7 +55,6 @@ object SKGGenerator extends BaseGenerator {
                   adjacency.add(skg.determineEdge(u, recVec, sigmas, random))
                   i += 1
                 }
-                accumulator.add(adjacency.size64())
                 Iterator((u, adjacency))
               }
           }
@@ -66,14 +63,13 @@ object SKGGenerator extends BaseGenerator {
   }
 
   override def postProcessing(): Unit = {
-    println("Param=%s, |V|=%d (2^%d), |E|=%d, Noise=%.3f".format(parser.param, parser.n, parser.logn, accumulator.value, parser.noise))
+    println("Param=%s, |V|=%d (2^%d), |E|=%d, Noise=%.3f".format(parser.param, parser.n, parser.logn, parser.e, parser.noise))
     println("PATH=%s, Machine=%d".format(parser.hdfs + parser.file, parser.machine))
     println("OutputFormat=%s, CompressCodec=%s".format(parser.format, parser.compress))
     println("RandomSeed=%d".format(parser.rng))
   }
 
   override def run: RDD[(Long, LongOpenHashBigSet)] = {
-    accumulator.reset()
     val vertexRDD = sc.range(0, parser.n - 1, 1, parser.machine)
     val ds = sc.broadcast(SKG.constructFrom(parser))
     val degreeRDD = vertexRDD.map(vid => (vid, ds.value.getExpectedDegree(vid)))
