@@ -24,6 +24,7 @@
 
 package kr.acon.spark
 
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext, SparkException}
 
 import scala.collection.mutable
@@ -33,8 +34,8 @@ object SparkBuilder {
   private var master = "local[*]"
   private var appName = "Application"
 
-  private var conf: SparkConf = null
-  private var sc: SparkContext = null
+  private var builder: SparkSession.Builder = null
+  var spark: SparkSession = null
 
   def setConfig(key: String, value: String): Unit = {
     configMap.put(key, value)
@@ -50,22 +51,22 @@ object SparkBuilder {
 
   def build() = {
     try {
-      conf = new SparkConf().setAppName(appName)
+      builder = SparkSession.builder().appName(appName)
       configMap.foreach {
         case (key, value) =>
-          conf = conf.set(key, value)
+        builder = builder.config(key, value)
       }
-      sc = new SparkContext(conf)
+      spark = builder.getOrCreate()
     } catch {
       case _: SparkException => {
-        conf = new SparkConf().setMaster("local[*]").setAppName(appName)
+        builder = SparkSession.builder().appName(appName).master("local[*]")
         configMap.foreach {
           case (key, value) =>
-            conf = conf.set(key, value)
+            builder = builder.config(key, value)
         }
-        sc = new SparkContext(conf)
+        spark = builder.getOrCreate()
       }
     }
-    sc
+    spark
   }
 }

@@ -28,6 +28,7 @@ import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
 import kr.acon.parser.Parser
 import org.apache.spark.rdd.RDD
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
+import org.apache.spark.sql.SparkSession
 
 object PredefinedFunctions {
 
@@ -82,6 +83,21 @@ plot ${plotLineInScript}
       writer.println(x)
     )
     writer.close()
+  }
+
+  class PARQUET extends Function {
+    override def f(e: t1, parser: t2) {
+      val sparkSession = SparkSession.getActiveSession.get
+      import sparkSession.implicits._
+      e.flatMap { case (v, adj) => new Iterator[(Long, Long)] {
+        val it = adj.iterator()
+
+        override def hasNext: Boolean = it.hasNext
+
+        override def next(): (Long, Long) = (v, it.nextLong())
+      }
+      }.toDF("src", "dst").write.parquet(parser.hdfs + parser.file)
+    }
   }
 
   class COUNT extends Function {

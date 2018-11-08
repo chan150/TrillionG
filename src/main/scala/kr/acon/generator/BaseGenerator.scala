@@ -35,7 +35,8 @@ import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
 class BaseGenerator extends Serializable {
   LoggingPolicy.disableLogging
 
-  lazy val sc = SparkBuilder.build()
+  lazy val spark = SparkBuilder.build()
+  def sc = spark.sparkContext
 
   val parser = new Parser
   val appName = "Base Graph Generator"

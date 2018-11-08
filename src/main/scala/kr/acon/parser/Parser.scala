@@ -100,6 +100,8 @@ class Parser extends Serializable {
       functionClass = classOf[PredefinedFunctions.UNDIRECTED]
     } else if (function == "both") {
       functionClass = classOf[PredefinedFunctions.BOTH]
+    } else if (function == "parquet") {
+      functionClass = classOf[PredefinedFunctions.PARQUET]
     } else if (function == "none") {
       functionClass = null
     } else {
