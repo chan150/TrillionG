@@ -24,8 +24,8 @@
 
 package kr.acon.spark
 
+import org.apache.spark.SparkException
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.{SparkConf, SparkContext, SparkException}
 
 import scala.collection.mutable
 
