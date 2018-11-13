@@ -58,7 +58,7 @@ Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/
 
 ## Citing the paper
 For more details about TrillionG, please refer to [our paper](https://dl.acm.org/authorize?N667286).
-You can download the paper authorized in [my github.io site](https://chan150.github.io/TrillionG/).
+You can download the paper via open access in [my github.io site](https://chan150.github.io/TrillionG/).
 
 If you use TrillionG, please cite:
 ```
