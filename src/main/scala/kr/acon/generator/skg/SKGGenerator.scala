@@ -67,6 +67,7 @@ object SKGGenerator extends BaseGenerator {
     println("PATH=%s, Machine=%d".format(parser.hdfs + parser.file, parser.machine))
     println("OutputFormat=%s, CompressCodec=%s".format(parser.format, parser.compress))
     println("RandomSeed=%d".format(parser.rng))
+    println("Sorted(by source vertex)=%s".format(parser.sorted))
   }
 
   override def run: RDD[(Long, LongOpenHashBigSet)] = {

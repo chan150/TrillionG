@@ -26,6 +26,7 @@ package kr.acon.io.recordwriter
 
 import java.io.DataOutputStream
 import java.nio.ByteBuffer
+import java.util.Arrays
 
 import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
 
@@ -43,7 +44,9 @@ abstract class ADJRecordWriter(out: DataOutputStream) extends BaseRecordWriter(o
   }
 
   @inline final def writeElements(value: LongOpenHashBigSet) = {
-    val iter = value.iterator
+    val array = value.toLongArray
+    Arrays.sort(array)
+    val iter = array.iterator
     val NumIter = (value.size64 / (Int.MaxValue.toLong * byteAlign * 2)).toInt
     for (i <- 0 until NumIter) {
       val bufferSize = Integer.MAX_VALUE / 2
