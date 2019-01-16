@@ -41,7 +41,6 @@ or
  - **-machine** or **-m** number of machines/threads (e.g. -m 120)
  - **-format** output format** (e.g. -format tsv)
  - **-compress** compression codec (e.g. -compress snappy; Snappy must be set in Hadoop)
- - **-sorted** sorted by source vertex, defalut false
 
 ## Output Format
  - **tsv** Edge list format with tap sperated value 

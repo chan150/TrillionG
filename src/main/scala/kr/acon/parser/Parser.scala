@@ -38,7 +38,6 @@ class Parser extends Serializable {
   var format = "adj"
   var compress = "none"
   var function = "none"
-  var sorted = false
 
   // plot option
   var xy = "xy"
@@ -52,7 +51,7 @@ class Parser extends Serializable {
   //  var bam0 = 2
   //  var bal = 10000l
 
-  val termBasic = List("-machine", "-m", "-hdfs", "-format", "-compress", "-rng", "-output", "-function", "-f", "-sorted")
+  val termBasic = List("-machine", "-m", "-hdfs", "-format", "-compress", "-rng", "-output", "-function", "-f")
   //  val termTrillionBA = List("-ba.n", "-ba.m", "-ba.m0", "-ba.l")
 
   val term = termBasic
@@ -79,7 +78,6 @@ class Parser extends Serializable {
       case "format" => format = value
       case "compress" => compress = value
       case "function" | "f" => function = value
-      case "sorted" => sorted = true
       case _ => // important to set
 
       //      case "ba.n" => ban = value.toLong

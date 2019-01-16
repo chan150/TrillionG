@@ -63,9 +63,6 @@ class BaseGenerator extends Serializable {
         parser.getFunctionClass.newInstance().f(edges, parser)
       } else {
         if (parser.getOutputFormat != null) {
-          if (parser.sorted) {
-            edges = edges.sortByKey()
-          }
           writeEdges
         } else {
           edges.count
