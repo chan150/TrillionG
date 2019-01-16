@@ -25,6 +25,7 @@
 package kr.acon.io.recordwriter
 
 import java.io.DataOutputStream
+import java.util.Arrays
 
 import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet
 
@@ -35,10 +36,12 @@ class TSVRecordWriter(out: DataOutputStream) extends BaseRecordWriter(out) {
   @inline final val keyValueSeparator = "\t".getBytes(utf8)
 
   @inline override def write(key: Long, value: LongOpenHashBigSet) = {
-    val iteration = value.iterator()
+    val array = value.toLongArray
+    Arrays.sort(array)
+    val iteration = array.iterator
     val k = key.toString.getBytes(utf8)
     while (iteration.hasNext) {
-      val v = iteration.nextLong().toString.getBytes(utf8)
+      val v = iteration.next.toString.getBytes(utf8)
       synchronized {
         out.write(k)
         out.write(keyValueSeparator)
